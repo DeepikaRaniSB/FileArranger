@@ -18,10 +18,50 @@ class File(object):
     def __str__(self):
         return f"file: { self.file_name }"
 
+    def get_target_folder(self, base_location=''):
+        """
+        gives location where file need to be arranged on the bases of file extension.
+        :param base_location: based on configuration of arranged folder.
+        :return: target_folder: location where file need to be kept.
+        """
+        target_folder = os.path.join(base_location, self.extension)
+        if not os.path.exists(target_folder):
+            print(f"going to create target folder: '{ target_folder }' for ext: '.{ self.extension }'")
+            os.mkdir(target_folder)
+        return target_folder
+
+    def upload_file(self, target_folder=''):
+        """
+
+        :param target_folder:
+        :return: target_file:
+        """
+        file_data = ''
+        with open(self.file_path, 'r') as file:
+            file_data = file.read()
+
+        target_file = os.path.join(target_folder, self.file_name)
+        with open(target_file, 'w') as file:
+            file.write(file_data)
+        return target_file
+
 
 if __name__ == '__main__':
+    ARRANGED_FOLDER = os.path.join(os.getcwd(), "test_Arranged_Folder")
     file = os.path.join(os.getcwd(), "test_file.txt")
+
+    if not os.path.exists(ARRANGED_FOLDER):
+        print(f"going to create arranged folder location: '{ARRANGED_FOLDER}'")
+        os.mkdir(ARRANGED_FOLDER)
+
     file1 = File(file)
     print(file1)
+    target_folder = file1.get_target_folder(ARRANGED_FOLDER)
+    target_file = file1.upload_file(target_folder)
+
+    if os.path.exists(target_file):
+        print(f"sucessfully placed file at '{ target_file }")
+    else:
+        print(f"Failed to arrange file: { file1.file_name }")
 
 # print(__name__)

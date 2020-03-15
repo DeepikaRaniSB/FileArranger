@@ -21,8 +21,16 @@ def main(file=''):
         if not os.path.exists(ARRANGED_FOLDER):
             print(f"going to create arranged folder location: '{ARRANGED_FOLDER}'")
             os.mkdir(ARRANGED_FOLDER)
-        upload_file = File(file)
-        print(upload_file)
+
+        test_file = File(file)
+        print(test_file)
+
+        target_folder = test_file.get_target_folder(ARRANGED_FOLDER)
+        target_file = test_file.upload_file(target_folder)
+        if os.path.exists(target_file):
+            print(f"sucessfully placed file at '{ target_file }")
+        else:
+            print(f"Failed to arrange file: { test_file.file_name }")
 
 
 def test():

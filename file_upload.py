@@ -37,11 +37,11 @@ class File(object):
         :return: target_file:
         """
         file_data = ''
-        with open(self.file_path, 'r') as file:
+        with open(self.file_path, 'r+b') as file:
             file_data = file.read()
 
         target_file = os.path.join(target_folder, self.file_name)
-        with open(target_file, 'w') as file:
+        with open(target_file, 'w+b') as file:
             file.write(file_data)
         return target_file
 

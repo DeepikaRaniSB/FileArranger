@@ -4,7 +4,7 @@ import os
 
 class File(object):
     """
-    class file
+    class File to instantiate object of File.
     """
 
     def __init__(self, file=''):
@@ -46,22 +46,18 @@ class File(object):
         return target_file
 
 
-if __name__ == '__main__':
-    ARRANGED_FOLDER = os.path.join(os.getcwd(), "test_Arranged_Folder")
-    file = os.path.join(os.getcwd(), "test_file.txt")
-
-    if not os.path.exists(ARRANGED_FOLDER):
-        print(f"going to create arranged folder location: '{ARRANGED_FOLDER}'")
-        os.mkdir(ARRANGED_FOLDER)
-
-    file1 = File(file)
-    print(file1)
-    target_folder = file1.get_target_folder(ARRANGED_FOLDER)
-    target_file = file1.upload_file(target_folder)
-
-    if os.path.exists(target_file):
-        print(f"sucessfully placed file at '{ target_file }")
-    else:
-        print(f"Failed to arrange file: { file1.file_name }")
-
+# if __name__ == '__main__':
+#     ARRANGED_FOLDER = os.path.join(os.getcwd(), "test_Arranged_Folder")#
+#     if not os.path.exists(ARRANGED_FOLDER):
+#         print(f"going to create arranged folder location: '{ARRANGED_FOLDER}'")
+#         os.mkdir(ARRANGED_FOLDER)
+#     file = os.path.join(os.getcwd(), "test_file.txt")
+#     file1 = File(file)
+#     print(file1)
+#     target_file = file1.upload_file(file1.get_target_folder(ARRANGED_FOLDER))
+#
+#     if os.path.exists(target_file):
+#         print(f"sucessfully placed file at '{ target_file }")
+#     else:
+#         print(f"Failed to arrange file: { file1.file_name }")
 # print(__name__)

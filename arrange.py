@@ -8,6 +8,7 @@ from file_upload import File
 ARRANGED_FOLDER = os.path.join(os.getcwd(), "Arranged_Folder")
 #: ::::::::::::: End of Global Variables ::::::::::::: :#
 
+
 def main(file=''):
     """
     master function to call all the functionalities to upload and arrange files.
